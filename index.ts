@@ -17,12 +17,14 @@ function run(paths: string[]) {
   return Promise.all(promises);
 }
 
-export const every = async (paths: string[]) => {
+export const every = async (src: string | string[]) => {
+  const paths = src instanceof Array ? src : [src];
   const res = await run(paths);
   return res.every(b => b);
 };
 
-export const some = async (paths: string[]) => {
+export const some = async (src: string | string[]) => {
+  const paths = src instanceof Array ? src : [src];
   const res = await run(paths);
   return res.some(b => b);
 };
